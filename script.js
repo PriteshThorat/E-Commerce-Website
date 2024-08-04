@@ -1,6 +1,10 @@
 const cart = document.getElementById("cart");
 const products = document.getElementById("products");
 
+let cartBuy;
+let cartRemove;
+let totalBuy;
+
 const cartBackground = document.createElement("div");
 cartBackground.id = "cart-background";
 document.body.appendChild(cartBackground);
@@ -75,10 +79,80 @@ const productFn = () => {
 
 let clicked = false;
 
+const totalAmount = () => {
+  let total = 0;
+  const { price, add } = cartObj;
+  price.forEach((el, i) => {
+    total += parseInt(el.replace(/,/g, "")) * add[i];
+  });
+  return total.toLocaleString();
+};
+
+const cutAll = () => {
+  cartObj.name = [];
+  cartObj.price = [];
+  cartObj.add = [];
+  productsObj.add = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+
+  const productAddValue = document.querySelectorAll(".product-add-value");
+  productAddValue.forEach((el) => {
+    el.textContent = 0;
+  });
+
+  cartElement.innerHTML = "";
+  cartDisplay();
+  totalAmount();
+  eventListener();
+};
+
+const cut = (index) => {
+  let replaceIndex = productsObj.name.indexOf(cartObj.name[index]);
+  console.log(replaceIndex);
+  productsObj.add[replaceIndex] = 0;
+
+  const productAddValue = document.querySelectorAll(".product-add-value");
+  productAddValue[replaceIndex].textContent = 0;
+
+  cartObj.add.splice(index, 1);
+  cartObj.price.splice(index, 1);
+  cartObj.name.splice(index, 1);
+
+  cartElement.innerHTML = "";
+  cartDisplay();
+  totalAmount();
+  eventListener();
+};
+
+const eventListener = () => {
+  if (clicked && cartObj.price.length !== 0) {
+    
+    cartBuy.forEach((el, i) => {
+        el.addEventListener("click", () => {
+          cut(el.id);
+        });
+      });
+      
+      cartRemove.forEach((el, i) => {
+        el.addEventListener("click", () => {
+          cut(el.id);
+        });
+      });
+    }
+
+    totalBuy.addEventListener("click", () => {
+      cutAll();
+    });
+};
+
 const cartDisplay = () => {
   cartElement.innerHTML = `
   <h1 class="cart-heading">Cart</h1>
   <div id="cart-div"></div>
+  <div class="total-div">
+    <p class="total-text">Total:</p>
+    <p class="total-amount">₹ ${totalAmount()}</p>
+    <button id="total-buy">Buy All</button>
+  </div>
   `;
 
   const { name, price, add } = cartObj;
@@ -91,13 +165,16 @@ const cartDisplay = () => {
       <span class="cart-price">₹${price[i]}</span>
       <span class="cart-add">${add[i]} Items</span>
       <div class="cart-btn">
-        <button id="cart-buy">Buy</button>
-        <button id="cart-remove">Remove</button>
+        <button class="cart-buy" id="${i}">Buy</button>
+        <button class="cart-remove" id="${i}">Remove</button>
       </div>
     </div>
     `;
   });
-  
+
+  cartBuy = document.querySelectorAll(".cart-buy");
+  cartRemove = document.querySelectorAll(".cart-remove");
+  totalBuy = document.getElementById("total-buy");
 };
 
 cart.addEventListener("click", () => {
@@ -114,6 +191,7 @@ cart.addEventListener("click", () => {
     products.style.display = "none";
 
     cartDisplay();
+    eventListener();
   }
 });
 
