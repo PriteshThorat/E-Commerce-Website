@@ -10,8 +10,7 @@
 }
 
 .buy-img {
-  width: 300px;
-  height: 300px;
+  width: 400px;
 }
 
 .buy-text {
@@ -91,9 +90,12 @@ header {
   top: 4px;
 }
 
-.cart-heading {
-  text-align: center;
-}
+/*.cart-heading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}*/
 
 .cart-name {
   text-align: center;
@@ -145,13 +147,12 @@ header {
   border: 2px;
   width: 200px;
   height: 150px;
-  display: flex;
   flex-direction: column;
   align-items: right;
   justify-content: right;
-  position: relative;
-  left: 50%;
-  bottom: 0%;
+  position: absolute;
+  right: 30px;
+  bottom: 30px;
 }
 
 .total-text {
@@ -165,6 +166,7 @@ header {
 }
 
 #total-buy {
+  width: 100%;
   font-size: 20px;
   padding-bottom: 5px;
 }
