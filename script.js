@@ -1,6 +1,7 @@
 const cart = document.getElementById("cart");
 const products = document.getElementById("products");
 const header = document.getElementById("header");
+const heading = document.getElementById("heading");
 
 let cartBuy;
 let cartRemove;
@@ -55,7 +56,7 @@ const productFn = (category, data) => {
       <p class="product-price">$${el.price}</p>
       <div class="item-add">
         <button class="product-add" id="add-${el.id}">+</button>
-        <span class="product-add-value">0</span>
+        <span class="product-add-value" id="text-${el.id}">0</span>
         <button class="product-sub" id="sub-${el.id}">-</button>
       </div>
     </div>
@@ -78,6 +79,7 @@ const cutAll = () => {
   cartObj.name = [];
   cartObj.price = [];
   cartObj.add = [];
+  cartObj.id = [];
 
   const productAddValue = document.querySelectorAll(".product-add-value");
   productAddValue.forEach((el) => {
@@ -91,12 +93,23 @@ const cutAll = () => {
 };
 
 const cut = (index) => {
+  let removeStr = index.replace(/buy|remove|-/g, ' ');
+  let removeInt = parseInt(removeStr);
+  let removeIndex = cartObj.id.indexOf(removeInt);
   const productAddValue = document.querySelectorAll(".product-add-value");
-  productAddValue[index].textContent = 0;
+  productAddValue.forEach((el, i) => {
+    let id = el.id;
+    let idStr = id.replace(/text|-/g, ' ');
+    let idInt = parseInt(idStr);
+    if (removeInt === idInt) {
+      productAddValue[i].textContent = 0;
+    }
+  });
 
-  cartObj.add.splice(index, 1);
-  cartObj.price.splice(index, 1);
-  cartObj.name.splice(index, 1);
+  cartObj.add.splice(removeIndex, 1);
+  cartObj.price.splice(removeIndex, 1);
+  cartObj.name.splice(removeIndex, 1);
+  cartObj.id.splice(removeIndex, 1);
 
   cartElement.innerHTML = "";
   cartDisplay();
@@ -115,7 +128,7 @@ const buy = () => {
 
   const qr = document.getElementById("qr");
   qr.innerHTML = `
-  <img class="buy-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTuEIzrAnoE6-6TrLFKG3kdUsNZ05IMmE-0w&s">
+  <img class="buy-img" src="https://www.dropbox.com/scl/fi/b3omkypd619slqlm70qn4/WhatsApp-Image-2024-08-17-at-4.07.03-PM.jpeg?rlkey=cezhbnq0zr0u78q0ydc1huq4o&st=hdwkfplq&raw=1">
   <p class="buy-text">Your Total Payment is ₹${totalAmount()}</p>
   `;
 }
@@ -123,10 +136,9 @@ const buy = () => {
 const eventListener = () => {
   if (clicked && cartObj.price.length !== 0) {
     
-    cartBuy.forEach((el, i) => {
+    cartBuy.forEach((el) => {
         el.addEventListener("click", () => {
           buy();
-          afterBuy();
           cut(el.id);
           document.addEventListener("mousemove", () => {
             const qr = document.getElementById("qr");
@@ -137,7 +149,7 @@ const eventListener = () => {
         });
       });
       
-      cartRemove.forEach((el, i) => {
+      cartRemove.forEach((el) => {
         el.addEventListener("click", () => {
           cut(el.id);
         });
@@ -158,7 +170,6 @@ const eventListener = () => {
 
 const cartDisplay = () => {
   cartElement.innerHTML = `
-  <h1 class="cart-heading">Cart</h1>
   <div id="cart-div"></div>
   <div class="total-div">
     <p class="total-text">Total:</p>
@@ -176,8 +187,8 @@ const cartDisplay = () => {
       <span class="cart-price">$${price[i]}</span>
       <span class="cart-add">${add[i]} Items</span>
       <div class="cart-btn">
-        <button class="cart-buy" id="${i}">Buy</button>
-        <button class="cart-remove" id="${i}">Remove</button>
+        <button class="cart-buy" id="buy-${id[i]}">Buy</button>
+        <button class="cart-remove" id="remove-${id[i]}">Remove</button>
       </div>
     </div>
     `;
@@ -240,12 +251,14 @@ cart.addEventListener("click", () => {
      clicked = false;
 
      cart.textContent = "Cart";
+     heading.textContent = "E-Commerce Website";
      products.style.display = "flex";
      cartElement.innerHTML = "";
   } else {
     clicked = true;
 
     cart.textContent = "Home";
+    heading.textContent = "Cart"
     products.style.display = "none";
 
     cartDisplay();
