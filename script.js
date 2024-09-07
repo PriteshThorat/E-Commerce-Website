@@ -128,7 +128,7 @@ const buy = () => {
 
   const qr = document.getElementById("qr");
   qr.innerHTML = `
-  <img class="buy-img" src="https://www.dropbox.com/scl/fi/b3omkypd619slqlm70qn4/WhatsApp-Image-2024-08-17-at-4.07.03-PM.jpeg?rlkey=cezhbnq0zr0u78q0ydc1huq4o&st=hdwkfplq&raw=1">
+  <img class="buy-img" src="https://i.imgur.com/d1YqY14.jpg">
   <p class="buy-text">Your Total Payment is ₹${totalAmount()}</p>
   `;
 }
