@@ -7,22 +7,17 @@ let cartBuy;
 let cartRemove;
 let totalBuy;
 
-const cartBackground = document.createElement("div");
+const cartBackground = document.createElement("div"); //Created an Element for Cart
 cartBackground.id = "cart-background";
 document.body.appendChild(cartBackground);
 const cartElement = document.getElementById("cart-background");
 
-const qrElement = document.createElement("div");
+const qrElement = document.createElement("div"); //Created an Element for QR
 document.body.appendChild(qrElement);
 qrElement.className = "qr-div";
 qrElement.id = "qr";
 
-const imagesURL = [
-  "https://i.imgur.com/LuWzBCD.jpg",
-  "https://i.imgur.com/5AaNff4.jpg",
-  "https://i.imgur.com/mCUfRde.jpg"
-];
-
+//Fetching E-Commerce Data
 async function fetchData(url) {
     try {
         const response = await fetch(url);
@@ -30,16 +25,17 @@ async function fetchData(url) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
         const data = await response.json(); 
-        const { categories, products } = data;
-        productFn(categories, products);
-        addAndRemove(products);
+        productFn(data);
+        addAndRemove(data);
     } catch (error) {
         console.error('Fetch error:', error);
     }
 }
 
-fetchData('https://gist.githubusercontent.com/PriteshThorat/e7c837a6d6d044a81f2cd65b7ec4f198/raw/170488a99b5c77ecbf64419d32760211202d4d55/ecommerce.json');
+//Giving the JSON File
+fetchData('https://fakestoreapi.com/products');
 
+//Creating Cart Data
 const cartObj = {
   id: [],
   name: [],
@@ -47,25 +43,28 @@ const cartObj = {
   add: []
 };
 
-const productFn = (category, data) => {
+//Adding Fetched Data to Home Page
+const productFn = (data) => {
   data.forEach((el, i) => {
     products.innerHTML += `
-    <div class="product-div">
-      <img class="product-img" src="${el.category_id === 1 ? imagesURL[0] : el.category_id === 2 ? imagesURL[1] : imagesURL[2]}">
-      <p class="product-name">${el.name}</p>
+    <button class="product-div">
+      <img class="product-img" src="${el.image}">
+      <div class="product-name">${el.title}</div>
       <p class="product-price">$${el.price}</p>
-      <div class="item-add">
-        <button class="product-add" id="add-${el.id}">+</button>
-        <span class="product-add-value" id="text-${el.id}">0</span>
-        <button class="product-sub" id="sub-${el.id}">-</button>
-      </div>
-    </div>
+      <button id="add-cart">Add to Cart</button>
+    </button>
     `;
   });
 };
 
+/*<div class="item-add">
+        <button class="product-add" id="add-${el.id}">+</button>
+        <span class="product-add-value" id="text-${el.id}">0</span>
+        <button class="product-sub" id="sub-${el.id}">-</button>
+  </div>*/
 let clicked = false;
 
+// Calculating Total Amount
 const totalAmount = () => {
   let total = 0;
   const { price, add } = cartObj;
@@ -75,6 +74,7 @@ const totalAmount = () => {
   return total.toLocaleString();
 };
 
+//Making Fuction for Buy All Operation to Remove All Element from Cart
 const cutAll = () => {
   cartObj.name = [];
   cartObj.price = [];
@@ -92,6 +92,7 @@ const cutAll = () => {
   eventListener();
 };
 
+// Making Fuction for Cut Operation to Remove an Element from Cart
 const cut = (index) => {
   let removeStr = index.replace(/buy|remove|-/g, ' ');
   let removeInt = parseInt(removeStr);
@@ -117,6 +118,7 @@ const cut = (index) => {
   eventListener();
 };
 
+// To display Payment Operation after clicking on Buy
 const buy = () => {
   if (totalAmount() == 0) {
     alert("Your Cart is Empty!");
@@ -133,6 +135,7 @@ const buy = () => {
   `;
 }
 
+// Making an Function for Event Listener, Because it comes after creating Cart Elements
 const eventListener = () => {
   if (clicked && cartObj.price.length !== 0) {
     
@@ -168,6 +171,7 @@ const eventListener = () => {
     });
 };
 
+// Making Inner Cart Elements 
 const cartDisplay = () => {
   cartElement.innerHTML = `
   <div id="cart-div"></div>
@@ -199,6 +203,7 @@ const cartDisplay = () => {
   totalBuy = document.getElementById("total-buy");
 };
 
+//To Add and Subtract Items from Cart
 const addAndRemove = (data) => {
   const productAdd = document.querySelectorAll(".product-add");
   const productSub = document.querySelectorAll(".product-sub");
@@ -209,12 +214,12 @@ const addAndRemove = (data) => {
       el.addEventListener("click", () => {
         if (el.id == `add-${element.id}`) {
           if (!cartObj.id.includes(element.id)) {
-            cartObj.name.push(element.name);
+            cartObj.name.push(element.title);
             cartObj.price.push(element.price);
             cartObj.id.push(element.id);
             cartObj.add.push(0);
           }
-          let addIndex = cartObj.name.indexOf(element.name);
+          let addIndex = cartObj.name.indexOf(element.title);
           cartObj.add[addIndex]++;
           productAddValue[i].textContent = cartObj.add[addIndex];
         }
@@ -227,7 +232,7 @@ const addAndRemove = (data) => {
         if (!cartObj.id.includes(element.id)) {
         alert("You Have Not Choosen Any Item!");
         } else {
-        let removeIndex = cartObj.name.indexOf(element.name);
+        let removeIndex = cartObj.name.indexOf(element.title);
 
         if (cartObj.add[removeIndex] === 1) {
           cartObj.add.splice(removeIndex, 1);
@@ -246,6 +251,7 @@ const addAndRemove = (data) => {
   });
 };
 
+//Event Listener for Cart Element to Call Necesscery Function and Do that Operation
 cart.addEventListener("click", () => {
   if (clicked) {
      clicked = false;
