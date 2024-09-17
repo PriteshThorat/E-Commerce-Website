@@ -238,6 +238,9 @@ const gotoInfo = (data) => {
   products.style.display = "none";
   productInfoDiv.textContent = "";
   productInfoDiv.innerHTML = `
+  <div class="img-mobile">
+    <img class="prd-img" src="${data.image}">
+  </div>
   <div class="info-img-div">
     <img class="info-img" src="${data.image}">
     <div class="info-buttons">
@@ -269,6 +272,7 @@ const cartDisplay = () => {
     <div class="order-full">
       <div id="cart-div"></div>
       <div class="place-order">
+        <p class="total-phone">$ ${(parseFloat(totalAmount()) + parseFloat(deliveryCharges)).toFixed(2)}</p>
         <button id="total-buy">PLACE ORDER</button>
       </div>
     </div>
