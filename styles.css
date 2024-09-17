@@ -27,6 +27,14 @@
   color: var(--fifth);
 }
 
+.total-phone {
+  display: none;
+}
+
+.btn-mobile {
+  display: none;
+}
+
 h1 {
   color: var(--fifth);
   background-color: var(--primary);
@@ -47,6 +55,10 @@ header {
   position: sticky;
   top: 0px;
   background-color: var(--primary);
+}
+
+.img-mobile {
+  display: none;
 }
 
 .cart-product-img {
@@ -390,4 +402,142 @@ hr {
 
 .info-rate {
   background-color: var(--secondary);
+}
+
+@media (min-width:0px) and (max-width:800px) {
+  .info-buttons {
+    z-index: 1;
+    position: fixed;
+    bottom: 0px;
+    width: 90%;
+    background-color: var(--primary);
+  }
+
+  .info-add-cart, .info-buy {
+    width: 50%;
+  }
+
+  .info-img {
+    display: none;
+  }
+
+  #product-info {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .img-mobile {
+    display: flex;
+    width: 100%;
+  }
+
+  .prd-img {
+    width: 90%;
+    height: 400px;
+  }
+
+  .info-div {
+    width: 90%;
+  }
+
+  .product-img {
+    width: 100px;
+    height: 150px;
+  }
+
+  .product-name {
+    font-size: 16px;
+    width: 100px;
+  }
+
+  .product-price {
+    font-size: 14px;
+  }
+
+  .buy-img {
+    width: 250px;
+  }
+
+  .buy-text {
+    font-size: 25px;
+  }
+
+  .product-add, .product-sub {
+    font-size: 16px;
+    width: 20px;
+    height: 20px;
+  }
+
+  .cart-product-img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .cart-name {
+    width: 150px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  #cart {
+    width: 120px;
+    height: 35px;
+    font-size: 24px;
+  }
+
+  .place-order {
+    z-index: 1;
+    position: fixed;
+    bottom: 0px;
+    width: 90%;
+    height: 50px;
+  }
+
+  .order-full {
+    width: 100%;
+  }
+
+  #total-buy {
+    width: 40%;
+    height: 40px;
+    font-size: 16px;
+  }
+
+  #cart-background {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .total-div {
+    width: 100%;
+    margin: 3px;
+    margin-bottom: 50px;
+  }
+
+  .details-head, .price-text, .delivery-text, .total-text {
+    font-size: 20px;
+  }
+
+  .price-value, .delivery-value, .total-amount {
+    font-size: 20px;
+  }
+
+  .updation {
+    gap: 2px;
+  }
+
+  .cart-remove {
+    margin-right: 25px;
+  }
+
+  .total-phone {
+    display: flex;
+    color: var(--fifth);
+    gap: 15px;
+  }
+
+  #cart-div {
+    width: 100%;
+  }
 }
