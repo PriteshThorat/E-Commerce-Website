@@ -9,17 +9,3 @@ const signinVerification = (email, pass) => {
 signinVerify.addEventListener("click", () => {
     signinVerification(signinEmail.value, signinPass.value);
 });
-
-fetch('http://localhost:3000/api/secret') // Ensure this URL is correct
-    .then(response => {
-        if (!response.ok) { // Check if the response is okay
-            throw new Error('Network response was not ok');
-        }
-        return response.text(); // Parse as text instead of JSON
-    })
-    .then(data => {
-        console.log('My Secret:', data); // Log the plain text secret
-    })
-    .catch(error => {
-        console.error('Error fetching secret:', error); // Log any errors
-    });
