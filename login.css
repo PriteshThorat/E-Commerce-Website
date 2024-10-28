@@ -1,0 +1,233 @@
+:root {
+    --primary: #26292B;
+    --secondary: #2E3239;
+    --third: #5F7ADB;
+    --fourth: #A2B2EE;
+    --fifth: white;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 2px black solid;
+    width: 40%;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+}
+
+.signup-details {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+}
+
+.signup-name {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 10px;
+}
+
+.main > input {
+    width: 90%;
+    height: 40px;
+    font-size: 21px;
+    border-radius: 10px;
+}
+
+.main > input::placeholder {
+    font-size: 21px;
+}
+
+.signup-name > input::placeholder {
+    font-size: 21px;
+}
+
+.signup-name > input {
+    width: 43%;
+    height: 40px;
+    font-size: 21px;
+    border-radius: 10px;
+}
+
+.signup-details > input::placeholder {
+    font-size: 21px;
+}
+
+.signup-details > input {
+    width: 90%;
+    height: 40px;
+    font-size: 21px;
+    border-radius: 10px;
+}
+
+.signup-btn {
+    width: 90%;
+    height: 40px;
+    font-size: 21px;
+    border-radius: 10px;
+    margin: 10px;
+}
+
+.footer-otpverify > button {
+    width: 70%;
+    height: 40px;
+    font-size: 21px;
+    border-radius: 10px;
+}
+
+.forgot {
+    width: 90%; 
+    text-align: right;
+    margin-top: 10px;
+    font-size: 21px;
+    color: black;
+}
+
+.main > button {
+    width: 90%;
+    height: 40px;
+    font-size: 21px;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.text {
+    font-size: 20px;
+    text-align: center;
+}
+
+h1 {
+    text-align: center;
+}
+
+.container-signup, .container-otpverify {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    width: 40%;
+    border: 2px solid black;
+}
+
+.main-otpverify {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    width: 100%;
+    gap: 10px;
+}
+
+.main-otpverify > input {
+    width: 50px;
+    height: 50px;
+    font-size: 21px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.footer-otpverify {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+    margin: 10px;
+}
+
+.container-forgotPass {
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    width: 40%;
+    border: 2px solid black;
+}
+
+.main-forgot {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.main-forgot > input {
+    width: 90%;
+    height: 40px;
+    font-size: 21px;
+    border-radius: 10px;
+}
+
+.main-forgot > button {
+    width: 70%;
+    height: 40px;
+    font-size: 21px;
+    border-radius: 10px;
+    margin: 10px;
+}
+
+.container-reset {
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    width: 40%;
+    border: 2px solid black;
+}
+
+.main-reset {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.main-reset > input {
+    width: 80%;
+    height: 40px;
+    font-size: 21px;
+    border-radius: 10px;
+}
+
+.main-reset > button {
+    width: 70%;
+    height: 40px;
+    font-size: 21px;
+    border-radius: 10px;
+    margin: 10px;
+}

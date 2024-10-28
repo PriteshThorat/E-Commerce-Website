@@ -40,7 +40,7 @@ h1 {
   background-color: var(--primary);
 }
 
-#cart {
+#cart, #sign-in {
   width: 150px;
   height: 45px;
   font-size: 30px;

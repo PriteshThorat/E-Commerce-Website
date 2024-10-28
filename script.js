@@ -2,6 +2,7 @@ const cart = document.getElementById("cart");
 const products = document.getElementById("products");
 const header = document.getElementById("header");
 const heading = document.getElementById("heading");
+const signIn = document.getElementById("sign-in");
 
 let cartBuy;
 let cartRemove;
@@ -149,6 +150,11 @@ const buy = (price) => {
   `;
 }
 
+//Going to signIn.html
+signIn.addEventListener("click", () => {
+  window.location.href = "signIn.html";
+});
+
 // Making an Function for Event Listener, Because it comes after creating Cart Elements
 const eventListener = () => {
   if (cartObj.price.length !== 0) {
@@ -264,7 +270,7 @@ const gotoInfo = (data) => {
 
 // Making Inner Cart Elements 
 const cartDisplay = () => {
-  console.log("cart");
+  console.log(cartObj);
   const { name, price, add, id, img } = cartObj;
 
   if (name.length !== 0) {

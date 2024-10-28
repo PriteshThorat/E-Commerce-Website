@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="login.css">
+    <title>OTP Verification</title>
+</head>
+<body>
+    <div class="container-otpverify">
+        <header>
+            <h1>Please Verify Account</h1>
+            <p class="text">Enter the six digit code we sent to your email address to verify you.</p>
+        </header>
+        <main class="main-otpverify">
+            <input type="number" min="0" max="9" maxlength="1" oninput="this.value = this.value.slice(0, 1)">
+            <input type="number" min="0" max="9" maxlength="1" oninput="this.value = this.value.slice(0, 1)">
+            <input type="number" min="0" max="9" maxlength="1" oninput="this.value = this.value.slice(0, 1)">
+            <input type="number" min="0" max="9" maxlength="1" oninput="this.value = this.value.slice(0, 1)">
+            <input type="number" min="0" max="9" maxlength="1" oninput="this.value = this.value.slice(0, 1)">
+            <input type="number" min="0" max="9" maxlength="1" oninput="this.value = this.value.slice(0, 1)">
+        </main>
+        <footer class="footer-otpverify">
+            <button>Verify & Continue</button>
+            <button>Cancel</button>
+        </footer>
+    </div>
+    <script src="signIn.js"></script>
+</body>
+</html>
