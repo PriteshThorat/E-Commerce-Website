@@ -1,0 +1,29 @@
+name: Access GitHub Secret  # This is a human-readable name for the workflow
+
+on:
+  push:  # This workflow will trigger on push events
+    branches:
+      - main  # Specify the branch that should trigger the workflow
+
+jobs:
+  access-secret:  # Job name
+    runs-on: ubuntu-latest  # This job will run on the latest Ubuntu environment
+
+    steps:
+      - name: Checkout code  # Step to check out the code from your repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js  # Step to set up the Node.js environment
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'  # Specify the version of Node.js to use
+
+      - name: Run script  # Step to run your script
+        run: |
+          echo "Running script to access secret..."
+          node -e "
+            const mySecret = process.env.MY_SECRET; // Corrected: Access the secret
+            console.log('My Secret:', mySecret); // Use the secret
+          "
+        env:
+          MY_SECRET: ${{ secrets.USER_KEY }}  # Corrected: Use MY_SECRET here to match the script
