@@ -11,6 +11,10 @@
   background-color: var(--primary);
 }
 
+#sign-in {
+  display: none;
+}
+
 .qr-div {
   display: flex;
   flex-direction: column;
