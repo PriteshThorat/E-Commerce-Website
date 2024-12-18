@@ -13,18 +13,18 @@
             <p class="text">Enter the six digit code we sent to your email address to verify you.</p>
         </header>
         <main class="main-otpverify">
-            <input type="number" min="0" max="9" maxlength="1" oninput="this.value = this.value.slice(0, 1)">
-            <input type="number" min="0" max="9" maxlength="1" oninput="this.value = this.value.slice(0, 1)">
-            <input type="number" min="0" max="9" maxlength="1" oninput="this.value = this.value.slice(0, 1)">
-            <input type="number" min="0" max="9" maxlength="1" oninput="this.value = this.value.slice(0, 1)">
-            <input type="number" min="0" max="9" maxlength="1" oninput="this.value = this.value.slice(0, 1)">
-            <input type="number" min="0" max="9" maxlength="1" oninput="this.value = this.value.slice(0, 1)">
+            <input id="1-number" type="number" min="0" max="9" maxlength="1" oninput="this.value = this.value.slice(0, 1)">
+            <input id="2-number" type="number" min="0" max="9" maxlength="1" oninput="this.value = this.value.slice(0, 1)">
+            <input id="3-number" type="number" min="0" max="9" maxlength="1" oninput="this.value = this.value.slice(0, 1)">
+            <input id="4-number" type="number" min="0" max="9" maxlength="1" oninput="this.value = this.value.slice(0, 1)">
+            <input id="5-number" type="number" min="0" max="9" maxlength="1" oninput="this.value = this.value.slice(0, 1)">
+            <input id="6-number" type="number" min="0" max="9" maxlength="1" oninput="this.value = this.value.slice(0, 1)">
         </main>
         <footer class="footer-otpverify">
-            <button>Verify & Continue</button>
-            <button>Cancel</button>
+            <button id="verify-btn">Verify & Continue</button>
+            <button id="cancel">Cancel</button>
         </footer>
     </div>
-    <script src="signIn.js"></script>
+    <script src="otpVer.js"></script>
 </body>
 </html>
