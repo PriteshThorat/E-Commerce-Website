@@ -132,7 +132,7 @@ const buyAll = () => {
 
   const qr = document.getElementById("qr");
   qr.innerHTML = `
-  <img class="buy-img" src="QR_Code.jpeg">
+  <img class="buy-img" src="QR_Code.webp">
   <p class="buy-text">Your Total Payment is $${totalAmount()}</p>
   `;
 }
@@ -145,7 +145,7 @@ const buy = (price) => {
 
   const qr = document.getElementById("qr");
   qr.innerHTML = `
-  <img class="buy-img" src="QR_Code.jpeg">
+  <img class="buy-img" src="QR_Code.webp">
   <p class="buy-text">Your Total Payment is $${price.toLocaleString()}</p>
   `;
 }
