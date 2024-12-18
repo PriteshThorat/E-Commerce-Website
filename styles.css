@@ -11,10 +11,6 @@
   background-color: var(--primary);
 }
 
-#sign-in {
-  display: none;
-}
-
 .qr-div {
   display: flex;
   flex-direction: column;
@@ -48,6 +44,10 @@ h1 {
   width: 150px;
   height: 45px;
   font-size: 30px;
+}
+
+#sign-in{
+  display: none;
 }
 
 header {

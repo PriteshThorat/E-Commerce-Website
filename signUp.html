@@ -5,6 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up</title>
     <link rel="stylesheet" href="login.css">
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+    </script>
+    <script type="text/javascript">
+      (function(){
+          emailjs.init({
+            publicKey: "UmqGt8_l_tbcI9-03",
+          });
+      })();
+    </script>
 </head>
 <body>
     <div class="container-signup">
@@ -12,14 +22,14 @@
         <p class="text">Already have an account? <a href="signIn.html">Sign in</a></p>
         <div class="signup-details">
             <div class="signup-name">
-                <input type="text" placeholder="First Name">
-                <input type="text" placeholder="Last Name">
+                <input id="first-name" type="text" placeholder="First Name">
+                <input id="last-name" type="text" placeholder="Last Name">
             </div>
-            <input type="email" placeholder="Email">
-            <input type="password" placeholder="Enter Password">
+            <input id="email" type="email" placeholder="Email">
+            <input id="password" type="password" placeholder="Enter Password">
         </div>
-        <button class="signup-btn">Send OTP</button>
+        <button id="otp-btn" class="signup-btn">Send OTP</button>
     </div>
-    <script src="signIn.js"></script>
+    <script src="signUp.js"></script>
 </body>
 </html>
